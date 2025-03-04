@@ -4,27 +4,24 @@ import IconGithub from '../icons/IconGithub.tsx';
 import IconBehance from '../icons/IconBehance.tsx';
 import IconInstagram from '../icons/IconInstagram.tsx';
 import Lines from "./lines/Lines.tsx";
-import "./Header.scss"
-
-const navLinks = [
-    { title: 'About', to: '#about', id: 'about' },
-    { title: 'Experience', to: '#experience', id: 'experience' },
-    { title: 'Projects', to: '#projects', id: 'projects' },
-];
-
-const socials = [
-    { link: 'https://www.linkedin.com/in/hanna-kryvaruchka-fog', icon: IconLinkedin },
-    { link: 'https://github.com/Krivoruchko-Anna?tab=repositories', icon: IconGithub },
-    { link: 'https://www.behance.net/anna49fogbb16', icon: IconBehance },
-    {
-        link: 'https://www.instagram.com/anna49foggy/profilecard/?igsh=d3VkbXgxc2Fydzcy',
-        icon: IconInstagram,
-    },
-];
+import "./Header.scss";
 
 const Header: React.FC = () => {
     const [activeSection, setActiveSection] = useState<string>('about');
     const [isScrollListenerDisabled, setIsScrollListenerDisabled] = useState<boolean>(false);
+
+    const navLinks = [
+        { title: 'About', to: '#about', id: 'about' },
+        { title: 'Experience', to: '#experience', id: 'experience' },
+        { title: 'Projects', to: '#projects', id: 'projects' },
+    ];
+
+    const socials = [
+        { link: 'https://www.linkedin.com/in/hanna-kryvaruchka-fog', icon: IconLinkedin },
+        { link: 'https://github.com/Krivoruchko-Anna?tab=repositories', icon: IconGithub },
+        { link: 'https://www.behance.net/anna49fogbb16', icon: IconBehance },
+        { link: 'https://www.instagram.com/anna49foggy/profilecard/?igsh=d3VkbXgxc2Fydzcy', icon: IconInstagram },
+    ];
 
     const updateActiveSection = (link: string) => {
         setActiveSection(link);
@@ -98,8 +95,6 @@ const Header: React.FC = () => {
                             }}>
                                 {link.title}
                             </a>
-
-
                         </li>
                     ))}
                 </ul>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const IconGithub: React.FC = () => (
     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g clip-path="url(#clip0_41_68)">
+      <g clipPath="url(#clip0_41_68)">
         <mask
             id="mask0_41_68"
             maskUnits="userSpaceOnUse"

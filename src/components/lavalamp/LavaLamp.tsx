@@ -2,17 +2,18 @@ import React from 'react';
 import './LavaLamp.scss';
 
 const LavaLamp: React.FC = () => {
+    const circleClasses = ['circle1', 'circle2', 'circle3', 'circle4', 'circle5', 'circle6'];
+    const circleMClasses = ['circle7', 'circle8'];
+
     return (
         <div className="lava-lamp">
-            <div className="circle circle1"></div>
-            <div className="circle circle2"></div>
-            <div className="circle circle3"></div>
-            <div className="circle circle4"></div>
-            <div className="circle circle5"></div>
-            <div className="circle circle6"></div>
+            {circleClasses.map((circleClass, index) => (
+                <div key={index} className={`circle ${circleClass}`} />
+            ))}
 
-            <div className="circle-m circle7"></div>
-            <div className="circle-m circle8"></div>
+            {circleMClasses.map((circleClass, index) => (
+                <div key={index} className={`circle-m ${circleClass}`} />
+            ))}
         </div>
     );
 };

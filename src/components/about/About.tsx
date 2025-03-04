@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useCallback } from "react";
 import { gsap } from "gsap";
 import { throttle } from "lodash";
 import "./About.scss";
@@ -7,46 +7,48 @@ const About: React.FC = () => {
     const photoRef = useRef<HTMLImageElement | null>(null);
     const circleRef = useRef<HTMLDivElement | null>(null);
 
-    const getRandomSign = (): number => (Math.random() < 0.5 ? -100 : 100);
+    const getRandomSign = useCallback((): number => (Math.random() < 0.5 ? -100 : 100), []);
 
-    const bounceEffect = throttle(() => {
-        if (!photoRef.current || !circleRef.current) return;
+    const bounceEffect = useRef(
+        throttle(() => {
+            if (!photoRef.current || !circleRef.current) return;
 
-        const randomX = getRandomSign();
-        const randomY = getRandomSign();
+            const randomX = getRandomSign();
+            const randomY = getRandomSign();
 
-        gsap.fromTo(
-            photoRef.current,
-            { y: 0, x: 0 },
-            {
-                scale: 0.85,
-                y: randomY,
-                x: randomX,
-                skewX: 25,
-                skewY: 25,
-                duration: 0.1,
-                ease: "elastic.out",
-                yoyo: true,
-                repeat: 1,
-            }
-        );
+            gsap.fromTo(
+                photoRef.current,
+                { y: 0, x: 0 },
+                {
+                    scale: 0.85,
+                    y: randomY,
+                    x: randomX,
+                    skewX: 25,
+                    skewY: 25,
+                    duration: 0.1,
+                    ease: "elastic.out",
+                    yoyo: true,
+                    repeat: 1,
+                }
+            );
 
-        gsap.fromTo(
-            circleRef.current,
-            { y: 0, x: 0 },
-            {
-                scale: 0.9,
-                y: 0,
-                x: 0,
-                skewX: 0,
-                skewY: 0,
-                duration: 0.1,
-                ease: "elastic.out",
-                yoyo: true,
-                repeat: 1,
-            }
-        );
-    }, 900);
+            gsap.fromTo(
+                circleRef.current,
+                { y: 0, x: 0 },
+                {
+                    scale: 0.9,
+                    y: 0,
+                    x: 0,
+                    skewX: 0,
+                    skewY: 0,
+                    duration: 0.1,
+                    ease: "elastic.out",
+                    yoyo: true,
+                    repeat: 1,
+                }
+            );
+        }, 900)
+    ).current;
 
     return (
         <div id="about" className="about">
@@ -54,6 +56,7 @@ const About: React.FC = () => {
 
             <div className="about__container">
                 <div ref={circleRef} className="about__circle"></div>
+
                 <img
                     src="/main_photo.png"
                     className="about__photo"

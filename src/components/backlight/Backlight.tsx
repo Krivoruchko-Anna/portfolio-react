@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { gsap } from 'gsap';
-import "./Backlight.scss"
+import './Backlight.scss';
 
 const Backlight: React.FC = () => {
     const backlight = useRef<HTMLDivElement | null>(null);
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMouseMove = useCallback((e: MouseEvent) => {
         const mouseX = e.clientX;
         const mouseY = e.clientY;
 
@@ -17,26 +17,9 @@ const Backlight: React.FC = () => {
                 ease: 'power1.out',
             });
         }
-    };
-
-    const handleMouseLeave = () => {
-        if (backlight.current) {
-            gsap.to(backlight.current, {
-                width: 500,
-                height: 500,
-                opacity: 0.2,
-                duration: 0.2,
-                ease: 'power2.out',
-            });
-        }
-    };
+    }, []);
 
     useEffect(() => {
-        const initMouseEffect = () => {
-            document.addEventListener('mousemove', handleMouseMove);
-            document.addEventListener('mouseleave', handleMouseLeave);
-        };
-
         const timer = setTimeout(() => {
             if (backlight.current) {
                 gsap.set(backlight.current, {
@@ -46,15 +29,15 @@ const Backlight: React.FC = () => {
                     boxShadow: '0 0 100px rgba(121, 88, 73, 0.5)',
                 });
             }
-            initMouseEffect();
+
+            document.addEventListener('mousemove', handleMouseMove);
         }, 500);
 
         return () => {
             clearTimeout(timer);
             document.removeEventListener('mousemove', handleMouseMove);
-            document.removeEventListener('mouseleave', handleMouseLeave);
         };
-    }, []);
+    }, [handleMouseMove]);
 
     return <div ref={backlight} className="backlight"></div>;
 };
