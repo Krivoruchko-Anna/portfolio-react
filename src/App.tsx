@@ -7,6 +7,7 @@ import Header from "./components/header/Header.tsx";
 import Backlight from "./components/backlight/Backlight.tsx";
 import LavaLamp from "./components/lavalamp/LavaLamp.tsx";
 import IconUp from "./components/icons/IconUp.tsx";
+import Copyright from "./components/copyright/Copyright.tsx";
 
 const App: React.FC  = () => {
     const [showArrow, setShowArrow] = useState(false);
@@ -49,6 +50,8 @@ const App: React.FC  = () => {
                 <Experience />
                 <Projects />
             </main>
+
+            <Copyright />
         </div>
     );
 }
