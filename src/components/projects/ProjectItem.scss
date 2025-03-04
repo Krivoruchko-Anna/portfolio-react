@@ -1,0 +1,32 @@
+@import "src/styles/mixins.scss";
+
+.project-item {
+    @include card-item;
+
+    &__image {
+        width: 120px;
+        height: 85px;
+        border-radius: 12px;
+    }
+
+    &__title {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--light-biege);
+    }
+}
+
+@media (max-width: 1024px) {
+    .project-item {
+        padding: 12px;
+
+        &:hover {
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        &__image {
+            width: 100px;
+        }
+    }
+}

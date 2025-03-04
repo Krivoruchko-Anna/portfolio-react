@@ -1,0 +1,30 @@
+.experience {
+    margin-top: 90px;
+    padding-top: 20px;
+
+    &__title {
+        display: none;
+        padding-left: 20px;
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .experience {
+        margin-top: 80px;
+
+        &__title {
+            display: block;
+        }
+
+        &__container {
+            margin-top: 10px;
+            gap: 10px;
+        }
+    }
+}

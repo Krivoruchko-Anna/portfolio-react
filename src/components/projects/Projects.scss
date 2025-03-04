@@ -1,0 +1,59 @@
+.projects {
+    margin-top: 100px;
+    padding-top: 20px;
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &__title {
+        display: none;
+        padding-left: 20px;
+    }
+
+    .show {
+        margin-bottom: 30px;
+        padding-left: 20px;
+        display: block;
+    }
+}
+
+@media (max-width: 1024px) {
+    .projects {
+        margin-top: 80px;
+
+        &__container {
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        &__title {
+            display: block;
+        }
+    }
+}
+
+.pet-projects {
+    .projects__container {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 28px;
+    }
+
+    .project-item {
+        padding: 12px;
+        width: 310px;
+    }
+
+    @media (max-width: 1480px) {
+        flex-direction: column;
+        gap: 20px;
+
+        .project-item {
+            padding: 20px;
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,138 @@
+.header {
+    position: sticky;
+    top: 0;
+    padding: 60px 20px 60px 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-height: 100vh;
+    height: 100vh;
+
+    &__name {
+        font-size: 34px;
+        font-weight: 700;
+        color: var(--light-biege);
+    }
+
+    &__title {
+        font-size: 22px;
+        font-weight: 500;
+        color: var(--light-blue);
+    }
+
+    &__description {
+        max-width: 360px;
+        margin-top: 10px;
+        font-size: 16px;
+    }
+
+    &__links {
+        margin-top: 12px;
+        display: flex;
+        gap: 20px;
+    }
+
+    &__icon {
+        svg {
+            width: 24px;
+
+            path {
+                transition: 0.3s all;
+            }
+
+            &:hover {
+                path {
+                    fill: var(--yellow);
+                }
+            }
+        }
+    }
+
+    &__navigation {
+        margin-top: 12px;
+    }
+
+    &__nav-item {
+        text-transform: uppercase;
+        width: fit-content;
+        margin-top: 14px;
+        transition: 0.5s all;
+        cursor: pointer;
+
+        a {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            &:before {
+                content: '';
+                display: block;
+                width: 40px;
+                height: 1px;
+                background-color: var(--biege);
+                transition: 0.3s all;
+            }
+        }
+
+        &:hover {
+            letter-spacing: 9px;
+
+            a {
+                &:before {
+                    width: 50px;
+                }
+            }
+        }
+    }
+}
+
+.active {
+    a {
+        font-weight: 600;
+        color: var(--light-blue);
+        letter-spacing: 9px;
+
+        &:before {
+            width: 90px;
+            height: 2px;
+            background-color: var(--light-blue);
+        }
+
+        &:hover {
+            &:before {
+                width: 90px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .header {
+        height: 250px;
+        padding: 10px 10px 20px 50px;
+
+        &__navigation {
+            display: none;
+        }
+
+        &__description {
+            max-width: 100%;
+        }
+
+        &__icon {
+            &:hover {
+                svg {
+                    path {
+                        fill: var(--biege);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 378px) {
+    .header {
+        height: 320px;
+    }
+}
