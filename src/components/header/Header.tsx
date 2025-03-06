@@ -84,15 +84,7 @@ const Header: React.FC = () => {
                             className={`header__nav-item ${activeSection === link.id ? 'active' : ''}`}
                             onClick={() => updateActiveSection(link.id)}
                         >
-                            <a href={link.to} onClick={(e) => {
-                                e.preventDefault();
-                                disableListener();
-
-                                const section = document.querySelector(link.to);
-                                if (section) {
-                                    section.scrollIntoView({ behavior: "smooth" });
-                                }
-                            }}>
+                            <a href={link.to} onClick={disableListener}>
                                 {link.title}
                             </a>
                         </li>
